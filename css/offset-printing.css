@@ -1,0 +1,320 @@
+/* ==========================================================================
+   1. RESET & VARIABLES
+   ========================================================================== */
+:root {
+    --primary-color: #ccad00;    /* Premium Metallic Gold */
+    --secondary-color: #757373;  /* Sleek Accent Grey */
+    --text-dark: #1e293b;        /* Slate Dark */
+    --text-light: #64748b;       /* Muted Body Grey */
+    --bg-light: #f8fafc;         /* Soft Background */
+    --white: #ffffff;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --max-width: 1200px;
+    --shadow: 0 10px 30px rgba(204, 173, 0, 0.03);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-dark);
+    background-color: var(--white);
+    line-height: 1.6;
+}
+
+.container {
+    width: 100%;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+a { text-decoration: none; color: inherit; }
+
+/* ==========================================================================
+   2. NAVIGATION BAR
+   ========================================================================== */
+.navbar {
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    padding: 18px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-text {
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--primary-color);
+}
+
+.logo-text .highlight { color: var(--secondary-color); }
+.nav-links { display: flex; gap: 32px; align-items: center; }
+
+.nav-item {
+    font-weight: 500;
+    font-size: 0.95rem;
+    color: var(--text-dark);
+    position: relative;
+    padding: 4px 0;
+    transition: var(--transition);
+}
+
+.nav-item:hover, .nav-item.active { color: var(--primary-color); }
+
+.nav-item::after {
+    content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px;
+    background-color: var(--primary-color); transition: var(--transition);
+}
+
+.nav-item:hover::after, .nav-item.active::after { width: 100%; }
+
+.btn {
+    display: inline-block;
+    padding: 12px 28px;
+    font-weight: 500;
+    border-radius: 8px;
+    transition: var(--transition);
+    font-size: 0.95rem;
+    text-align: center;
+}
+
+.btn-quote { background-color: var(--text-dark); color: var(--white); }
+.btn-quote:hover { background-color: var(--primary-color); transform: translateY(-2px); }
+.btn-quote-mobile { display: none; }
+.menu-toggle { display: none; background: none; border: none; font-size: 1.5rem; cursor: pointer; }
+
+/* ==========================================================================
+   3. HERO BANNER
+   ========================================================================== */
+.page-hero {
+    background: linear-gradient(rgba(15, 23, 42, 0.9), rgba(30, 41, 59, 0.95)), 
+                url('../images/offset-banner.jpg') no-repeat center center/cover;
+    padding: 120px 0;
+    color: var(--white);
+    text-align: center;
+}
+
+.hero-tag {
+    color: var(--primary-color);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    display: block;
+    margin-bottom: 12px;
+}
+
+.hero-content h1 {
+    font-size: 3.4rem;
+    font-weight: 700;
+    margin-bottom: 14px;
+    letter-spacing: -0.5px;
+}
+
+.hero-content p {
+    font-size: 1.15rem;
+    color: #cbd5e1;
+    max-width: 700px;
+    margin: 0 auto;
+    font-weight: 300;
+}
+
+/* ==========================================================================
+   4. PRINTING FEATURES SHOWCASE
+   ========================================================================== */
+.printing-features {
+    background-color: var(--white);
+    padding: 60px 0;
+    margin-top: -40px;
+    position: relative;
+    z-index: 10;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    background: var(--white);
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.04);
+}
+
+.feature-item {
+    text-align: center;
+    padding: 10px 20px;
+}
+
+.feature-item i {
+    font-size: 2.2rem;
+    color: var(--primary-color);
+    margin-bottom: 16px;
+}
+
+.feature-item h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.feature-item p {
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
+
+/* ==========================================================================
+   5. SERVICES INCLUDED GRID
+   ========================================================================== */
+.services-included {
+    padding: 100px 0;
+    background-color: var(--bg-light);
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-header h2 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.section-header p {
+    color: var(--text-light);
+    font-size: 1rem;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.service-card {
+    background-color: var(--white);
+    padding: 40px 30px;
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(0, 0, 0, 0.01);
+    transition: var(--transition);
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(204, 173, 0, 0.08);
+    border-color: rgba(204, 173, 0, 0.2);
+}
+
+.icon-box {
+    width: 55px;
+    height: 55px;
+    background-color: #fefce8;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    color: var(--primary-color);
+    margin-bottom: 24px;
+    transition: var(--transition);
+}
+
+.service-card:hover .icon-box {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+.service-card h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.service-card p {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    line-height: 1.5;
+}
+
+/* ==========================================================================
+   6. CALL TO ACTION & FOOTER
+   ========================================================================== */
+.cta-banner {
+    padding: 60px 0;
+    background: linear-gradient(135deg, #ccad00 0%, #a38a00 100%);
+    color: var(--white);
+}
+
+.cta-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cta-text h2 { font-size: 2rem; font-weight: 700; margin-bottom: 6px; }
+.cta-text p { font-size: 1rem; opacity: 0.9; font-weight: 300; }
+
+.btn-cta-light {
+    background-color: var(--text-dark);
+    color: var(--white);
+    font-weight: 600;
+}
+
+.btn-cta-light:hover {
+    background-color: var(--white);
+    color: var(--text-dark);
+    transform: translateX(4px);
+}
+
+.main-footer {
+    background-color: #0f172a;
+    color: #94a3b8;
+    padding: 45px 0;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+.main-footer h3 { color: var(--white); margin-bottom: 8px; }
+.footer-credit { color: #64748b; margin-top: 10px; font-size: 0.82rem; }
+
+/* ==========================================================================
+   7. RESPONSIVE QUERIES
+   ========================================================================== */
+@media (max-width: 992px) {
+    .features-grid, .services-grid { grid-template-columns: repeat(2, 1fr); }
+    .hero-content h1 { font-size: 2.6rem; }
+    .cta-flex { flex-direction: column; text-align: center; gap: 30px; }
+}
+
+@media (max-width: 768px) {
+    .menu-toggle { display: block; }
+    .nav-links {
+        position: fixed; top: 78px; left: -100%; width: 100%; height: calc(100vh - 78px);
+        background-color: var(--white); flex-direction: column; gap: 0; padding: 40px 24px;
+        transition: 0.4s cubic-bezier(0.1, 1, 0.1, 1); box-shadow: 0 15px 30px rgba(0,0,0,0.05);
+    }
+    .nav-links.active { left: 0; }
+    .nav-item { width: 100%; padding: 16px 0; border-bottom: 1px solid #f1f5f9; }
+    .nav-item::after { display: none; }
+    .nav-cta { display: none; }
+    .btn-quote-mobile { display: block; width: 100%; margin-top: 30px; background-color: var(--primary-color); color: var(--white); }
+
+    .features-grid, .services-grid { grid-template-columns: 1fr; }
+    .features-grid { padding: 30px 20px; }
+    .hero-content h1 { font-size: 2.1rem; }
+}

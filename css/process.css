@@ -1,0 +1,292 @@
+/* ==========================================================================
+   1. RESET & VARIABLES
+   ========================================================================== */
+:root {
+    --primary-color: #ccad00;    /* Premium Metallic Gold */
+    --secondary-color: #757373;  /* Sleek Accent Grey */
+    --text-dark: #1e293b;        /* Slate Dark for readability */
+    --text-light: #64748b;       /* Muted gray for body paragraphs */
+    --bg-light: #f8fafc;         /* Soft background white */
+    --white: #ffffff;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --max-width: 1200px;
+    --shadow: 0 10px 30px rgba(204, 173, 0, 0.05); /* Soft gold shadow tint */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-dark);
+    background-color: var(--white);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+.container {
+    width: 100%;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ==========================================================================
+   2. NAVIGATION BAR
+   ========================================================================== */
+.navbar {
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    padding: 18px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 2px 20px rgba(0,0,0,0.02);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-text {
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--primary-color);
+}
+
+.logo-text .highlight {
+    color: var(--secondary-color);
+}
+
+.nav-links {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+}
+
+.nav-item {
+    font-weight: 500;
+    font-size: 0.95rem;
+    color: var(--text-dark);
+    position: relative;
+    padding: 4px 0;
+    transition: var(--transition);
+}
+
+.nav-item:hover, .nav-item.active {
+    color: var(--primary-color);
+}
+
+.nav-item::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-color);
+    transition: var(--transition);
+}
+
+.nav-item:hover::after, .nav-item.active::after {
+    width: 100%;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 28px;
+    font-weight: 500;
+    border-radius: 8px;
+    transition: var(--transition);
+    cursor: pointer;
+    font-size: 0.95rem;
+}
+
+.btn-quote {
+    background-color: var(--text-dark);
+    color: var(--white);
+}
+
+.btn-quote:hover {
+    background-color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+.btn-quote-mobile { display: none; }
+.menu-toggle { display: none; background: none; border: none; font-size: 1.5rem; color: var(--text-dark); cursor: pointer; }
+
+/* ==========================================================================
+   3. PROCESS HERO BANNER
+   ========================================================================== */
+.page-banner {
+    background: linear-gradient(rgba(15, 23, 42, 0.88), rgba(30, 41, 59, 0.94)), 
+                url('../images/process-bg.jpg') no-repeat center center/cover;
+    padding: 100px 0;
+    color: var(--white);
+    text-align: center;
+}
+
+.banner-content h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    letter-spacing: -0.5px;
+}
+
+.banner-content p {
+    font-size: 1.1rem;
+    color: #cbd5e1;
+    max-width: 650px;
+    margin: 0 auto;
+    font-weight: 300;
+}
+
+/* ==========================================================================
+   4. PRODUCTION PROCESS GRID
+   ========================================================================== */
+.process-section {
+    padding: 100px 0;
+    background-color: var(--bg-light);
+}
+
+.process-steps-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+}
+
+.process-card {
+    background-color: var(--white);
+    padding: 40px 28px;
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(0, 0, 0, 0.01);
+    transition: var(--transition);
+}
+
+.process-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(204, 173, 0, 0.12);
+}
+
+.card-header-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 28px;
+}
+
+.step-number {
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: rgba(204, 173, 0, 0.15); /* Translucent massive numbering */
+    line-height: 1;
+    transition: var(--transition);
+}
+
+.process-card:hover .step-number {
+    color: var(--primary-color);
+    transform: scale(1.05);
+}
+
+.process-icon {
+    width: 55px;
+    height: 55px;
+    background-color: #f1f5f9;
+    color: var(--secondary-color);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    transition: var(--transition);
+}
+
+.process-card:hover .process-icon {
+    background-color: var(--text-dark);
+    color: var(--white);
+}
+
+.process-card h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 12px;
+    line-height: 1.4;
+}
+
+.process-card p {
+    color: var(--text-light);
+    font-size: 0.92rem;
+    line-height: 1.6;
+}
+
+/* ==========================================================================
+   5. RESPONSIVE MEDIA QUERIES
+   ========================================================================== */
+@media (max-width: 1200px) {
+    .process-steps-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 78px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 78px);
+        background-color: var(--white);
+        flex-direction: column;
+        gap: 0;
+        padding: 40px 24px;
+        transition: 0.4s cubic-bezier(0.1, 1, 0.1, 1);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.05);
+    }
+
+    .nav-links.active { left: 0; }
+    .nav-item { width: 100%; padding: 16px 0; font-size: 1.1rem; border-bottom: 1px solid #f1f5f9; }
+    .nav-item::after { display: none; }
+    .nav-cta { display: none; }
+
+    .btn-quote-mobile {
+        display: block;
+        width: 100%;
+        margin-top: 30px;
+        background-color: var(--primary-color);
+        color: var(--white);
+    }
+
+    .process-steps-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+    
+    .process-card {
+        padding: 35px 24px;
+    }
+    
+    .banner-content h1 { font-size: 2.3rem; }
+}

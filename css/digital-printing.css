@@ -1,0 +1,327 @@
+/* ==========================================================================
+   1. VARIABLES & RESET
+   ========================================================================== */
+:root {
+    --primary-gold: #ccad00;     /* Premium Signature Gold */
+    --accent-grey: #757373;      /* Clean Professional Grey */
+    --slate-dark: #0f172a;       /* Deep slate base */
+    --slate-muted: #475569;      /* Smooth secondary readable body */
+    --soft-white: #f8fafc;
+    --pure-white: #ffffff;
+    --transition-smooth: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+    --layout-width: 1200px;
+    --card-shadow: 0 10px 40px rgba(15, 23, 42, 0.03);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: var(--slate-dark);
+    background-color: var(--pure-white);
+    line-height: 1.6;
+}
+
+.container {
+    width: 100%;
+    max-width: var(--layout-width);
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+a { text-decoration: none; color: inherit; }
+
+/* ==========================================================================
+   2. HEADER & FIXED NAVIGATION
+   ========================================================================== */
+.navbar {
+    background-color: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(12px);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    padding: 18px 0;
+    border-bottom: 1px solid rgba(15, 23, 42, 0.05);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-text {
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--primary-gold);
+}
+
+.logo-text .highlight { color: var(--accent-grey); }
+.nav-links { display: flex; gap: 32px; align-items: center; }
+
+.nav-item {
+    font-weight: 500;
+    font-size: 0.95rem;
+    color: var(--slate-dark);
+    position: relative;
+    padding: 4px 0;
+    transition: var(--transition-smooth);
+}
+
+.nav-item:hover, .nav-item.active { color: var(--primary-gold); }
+
+.nav-item::after {
+    content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px;
+    background-color: var(--primary-gold); transition: var(--transition-smooth);
+}
+
+.nav-item:hover::after, .nav-item.active::after { width: 100%; }
+
+.btn {
+    display: inline-block;
+    padding: 12px 28px;
+    font-weight: 500;
+    border-radius: 8px;
+    transition: var(--transition-smooth);
+    font-size: 0.95rem;
+    text-align: center;
+}
+
+.btn-quote { background-color: var(--slate-dark); color: var(--pure-white); }
+.btn-quote:hover { background-color: var(--primary-gold); transform: translateY(-2px); }
+.btn-quote-mobile { display: none; }
+.menu-toggle { display: none; background: none; border: none; font-size: 1.5rem; cursor: pointer; }
+
+/* ==========================================================================
+   3. HERO AREA
+   ========================================================================== */
+.page-hero {
+    background: linear-gradient(rgba(15, 23, 42, 0.92), rgba(30, 41, 59, 0.96)), 
+                url('../images/digital-banner.jpg') no-repeat center center/cover;
+    padding: 130px 0;
+    color: var(--pure-white);
+    text-align: center;
+}
+
+.hero-tag {
+    color: var(--primary-gold);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    display: block;
+    margin-bottom: 12px;
+}
+
+.hero-content h1 {
+    font-size: 3.4rem;
+    font-weight: 700;
+    margin-bottom: 14px;
+    letter-spacing: -0.5px;
+}
+
+.hero-content p {
+    font-size: 1.15rem;
+    color: #cbd5e1;
+    max-width: 700px;
+    margin: 0 auto;
+    font-weight: 300;
+}
+
+/* ==========================================================================
+   4. ADVANTAGES STRIP
+   ========================================================================== */
+.digital-advantages {
+    background-color: var(--pure-white);
+    padding: 50px 0;
+    margin-top: -50px;
+    position: relative;
+    z-index: 10;
+}
+
+.advantages-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    background: var(--pure-white);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 30px 60px rgba(15, 23, 42, 0.05);
+}
+
+.adv-item {
+    text-align: center;
+    padding: 10px 15px;
+}
+
+.adv-item i {
+    font-size: 2rem;
+    color: var(--primary-gold);
+    margin-bottom: 16px;
+}
+
+.adv-item h3 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.adv-item p {
+    font-size: 0.9rem;
+    color: var(--slate-muted);
+}
+
+/* ==========================================================================
+   5. PRODUCTS SHOWCASE MATRIX
+   ========================================================================== */
+.products-section {
+    padding: 90px 0;
+    background-color: var(--soft-white);
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-header h2 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    letter-spacing: -0.5px;
+}
+
+.section-header p {
+    color: var(--slate-muted);
+    font-size: 1rem;
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+}
+
+.product-card {
+    background-color: var(--pure-white);
+    padding: 35px 24px;
+    border-radius: 16px;
+    box-shadow: var(--card-shadow);
+    border: 1px solid rgba(15, 23, 42, 0.01);
+    transition: var(--transition-smooth);
+}
+
+.product-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 45px rgba(204, 173, 0, 0.08);
+    border-color: rgba(204, 173, 0, 0.15);
+}
+
+.card-icon-box {
+    width: 52px;
+    height: 52px;
+    background-color: #fffbeb;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.35rem;
+    color: var(--primary-gold);
+    margin-bottom: 22px;
+    transition: var(--transition-smooth);
+}
+
+.product-card:hover .card-icon-box {
+    background-color: var(--primary-gold);
+    color: var(--pure-white);
+}
+
+.product-card h3 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    letter-spacing: -0.2px;
+}
+
+.product-card p {
+    font-size: 0.88rem;
+    color: var(--slate-muted);
+    line-height: 1.5;
+}
+
+/* ==========================================================================
+   6. FOOTER & CALL-TO-ACTION
+   ========================================================================== */
+.cta-banner {
+    padding: 60px 0;
+    background: linear-gradient(135deg, #ccad00 0%, #ab9100 100%);
+    color: var(--pure-white);
+}
+
+.cta-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cta-text h2 { font-size: 2rem; font-weight: 700; margin-bottom: 6px; letter-spacing: -0.5px; }
+.cta-text p { font-size: 1rem; opacity: 0.95; font-weight: 300; }
+
+.btn-cta-light {
+    background-color: var(--slate-dark);
+    color: var(--pure-white);
+    font-weight: 600;
+}
+
+.btn-cta-light:hover {
+    background-color: var(--pure-white);
+    color: var(--slate-dark);
+    transform: translateX(4px);
+}
+
+.main-footer {
+    background-color: #0b0f19;
+    color: #64748b;
+    padding: 45px 0;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+.main-footer h3 { color: var(--pure-white); margin-bottom: 8px; font-size: 1.35rem; }
+.footer-desc { color: #475569; }
+.footer-credit { margin-top: 10px; font-size: 0.82rem; color: #334155; }
+
+/* ==========================================================================
+   7. RESPONSIVE BREAKPOINTS
+   ========================================================================== */
+@media (max-width: 1200px) {
+    .products-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 992px) {
+    .advantages-grid { grid-template-columns: repeat(2, 1fr); }
+    .hero-content h1 { font-size: 2.6rem; }
+    .cta-flex { flex-direction: column; text-align: center; gap: 30px; }
+}
+
+@media (max-width: 768px) {
+    .menu-toggle { display: block; }
+    .nav-links {
+        position: fixed; top: 78px; left: -100%; width: 100%; height: calc(100vh - 78px);
+        background-color: var(--pure-white); flex-direction: column; gap: 0; padding: 40px 24px;
+        transition: 0.4s cubic-bezier(0.1, 1, 0.1, 1); box-shadow: 0 15px 30px rgba(0,0,0,0.05);
+    }
+    .nav-links.active { left: 0; }
+    .nav-item { width: 100%; padding: 16px 0; border-bottom: 1px solid #e2e8f0; }
+    .nav-item::after { display: none; }
+    .nav-cta { display: none; }
+    .btn-quote-mobile { display: block; width: 100%; margin-top: 30px; background-color: var(--primary-gold); color: var(--pure-white); }
+
+    .advantages-grid, .products-grid { grid-template-columns: 1fr; }
+    .advantages-grid { padding: 30px 20px; }
+    .hero-content h1 { font-size: 2.1rem; }
+}

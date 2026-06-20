@@ -1,0 +1,421 @@
+/* ==========================================================================
+   1. RESET & VARIABLES
+   ========================================================================== */
+:root {
+    --primary-color: #ccad00;    /* Premium Metallic Gold */
+    --secondary-color: #757373;  /* Sleek Accent Grey */
+    --text-dark: #1e293b;        /* Slate Dark for headings */
+    --text-light: #64748b;       /* Muted gray for body paragraphs */
+    --bg-light: #f8fafc;         /* Soft background white */
+    --white: #ffffff;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --max-width: 1200px;
+    --shadow: 0 10px 30px rgba(204, 173, 0, 0.04);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-dark);
+    background-color: var(--white);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+.container {
+    width: 100%;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ==========================================================================
+   2. NAVIGATION BAR
+   ========================================================================== */
+.navbar {
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    padding: 18px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 2px 20px rgba(0,0,0,0.02);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-text {
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--primary-color);
+}
+
+.logo-text .highlight {
+    color: var(--secondary-color);
+}
+
+.nav-links {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+}
+
+.nav-item {
+    font-weight: 500;
+    font-size: 0.95rem;
+    color: var(--text-dark);
+    position: relative;
+    padding: 4px 0;
+    transition: var(--transition);
+}
+
+.nav-item:hover, .nav-item.active {
+    color: var(--primary-color);
+}
+
+.nav-item::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-color);
+    transition: var(--transition);
+}
+
+.nav-item:hover::after, .nav-item.active::after {
+    width: 100%;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 28px;
+    font-weight: 500;
+    border-radius: 8px;
+    transition: var(--transition);
+    cursor: pointer;
+    font-size: 0.95rem;
+}
+
+.btn-quote {
+    background-color: var(--text-dark);
+    color: var(--white);
+}
+
+.btn-quote:hover {
+    background-color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+.btn-quote-mobile { display: none; }
+.menu-toggle { display: none; background: none; border: none; font-size: 1.5rem; color: var(--text-dark); cursor: pointer; }
+
+/* ==========================================================================
+   3. CONTACT HERO BANNER
+   ========================================================================== */
+.page-banner {
+    background: linear-gradient(rgba(15, 23, 42, 0.88), rgba(30, 41, 59, 0.94)), 
+                url('../images/contact-bg.jpg') no-repeat center center/cover;
+    padding: 110px 0;
+    color: var(--white);
+    text-align: center;
+}
+
+.section-tag {
+    display: inline-block;
+    color: var(--primary-color);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+}
+
+.banner-content h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 14px;
+    letter-spacing: -0.5px;
+}
+
+.banner-content p {
+    font-size: 1.1rem;
+    color: #cbd5e1;
+    max-width: 680px;
+    margin: 0 auto;
+    font-weight: 300;
+}
+
+/* ==========================================================================
+   4. QUICK CONTACT INFO CARDS
+   ========================================================================== */
+.contact-info-section {
+    padding: 80px 0 40px 0;
+    background-color: var(--bg-light);
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+}
+
+.contact-card {
+    background-color: var(--white);
+    padding: 35px 24px;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(0, 0, 0, 0.02);
+    transition: var(--transition);
+}
+
+.contact-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 15px 35px rgba(204, 173, 0, 0.1);
+    border-color: rgba(204, 173, 0, 0.2);
+}
+
+.card-icon {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    margin-bottom: 18px;
+}
+
+.contact-card h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.contact-card p {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-dark);
+    margin-bottom: 6px;
+    word-break: break-all;
+}
+
+.contact-card span {
+    font-size: 0.8rem;
+    color: var(--text-light);
+}
+
+.dynamic-card:hover {
+    transform: none;
+    border-color: rgba(0, 0, 0, 0.02);
+    box-shadow: var(--shadow);
+}
+
+/* ==========================================================================
+   5. CONTACT FORM & SIDEBAR INFO split
+   ========================================================================== */
+.contact-section {
+    padding: 60px 0 100px 0;
+    background-color: var(--bg-light);
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 50px;
+}
+
+.contact-left, .contact-right {
+    background-color: var(--white);
+    padding: 45px;
+    border-radius: 18px;
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(0, 0, 0, 0.01);
+}
+
+.contact-left h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.form-subtext {
+    font-size: 0.92rem;
+    color: var(--text-light);
+    margin-bottom: 30px;
+}
+
+.contact-form .form-group {
+    margin-bottom: 20px;
+}
+
+.contact-form input, 
+.contact-form select, 
+.contact-form textarea {
+    width: 100%;
+    padding: 14px 18px;
+    font-family: inherit;
+    font-size: 0.92rem;
+    background-color: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    color: var(--text-dark);
+    transition: var(--transition);
+    outline: none;
+}
+
+.contact-form input:focus, 
+.contact-form select:focus, 
+.contact-form textarea:focus {
+    border-color: var(--primary-color);
+    background-color: var(--white);
+    box-shadow: 0 0 0 4px rgba(204, 173, 0, 0.08);
+}
+
+.btn-submit {
+    background-color: var(--text-dark);
+    color: var(--white);
+    border: none;
+    width: 100%;
+    padding: 15px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.btn-submit:hover {
+    background-color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+/* Right Sidebar Details */
+.contact-right {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.hours-card h3, .map-box h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.hours-card h3 i, .map-box h3 i {
+    color: var(--primary-color);
+}
+
+.hours-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid #f1f5f9;
+    font-size: 0.92rem;
+}
+
+.hours-row:last-child {
+    border: none;
+}
+
+.hours-row span {
+    font-weight: 500;
+}
+
+.closed-tag {
+    color: #ef4444;
+    font-weight: 600 !important;
+}
+
+/* ==========================================================================
+   6. SIMPLE MODERN FOOTER
+   ========================================================================== */
+.main-footer {
+    background-color: #0f172a;
+    color: #94a3b8;
+    padding: 45px 0;
+    text-align: center;
+}
+
+.main-footer h3 {
+    color: var(--white);
+    font-size: 1.4rem;
+    margin-bottom: 8px;
+}
+
+.footer-desc {
+    font-size: 0.9rem;
+    margin-bottom: 16px;
+}
+
+.footer-credit {
+    font-size: 0.82rem;
+    color: #64748b;
+}
+
+/* ==========================================================================
+   7. RESPONSIVE MEDIA QUERIES
+   ========================================================================== */
+@media (max-width: 1200px) {
+    .info-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .menu-toggle { display: block; }
+    .nav-links {
+        position: fixed;
+        top: 78px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 78px);
+        background-color: var(--white);
+        flex-direction: column;
+        gap: 0;
+        padding: 40px 24px;
+        transition: 0.4s cubic-bezier(0.1, 1, 0.1, 1);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.05);
+    }
+    .nav-links.active { left: 0; }
+    .nav-item { width: 100%; padding: 16px 0; font-size: 1.1rem; border-bottom: 1px solid #f1f5f9; }
+    .nav-item::after { display: none; }
+    .nav-cta { display: none; }
+    .btn-quote-mobile {
+        display: block;
+        width: 100%;
+        margin-top: 30px;
+        background-color: var(--primary-color);
+        color: var(--white);
+    }
+
+    .info-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+    .contact-left, .contact-right {
+        padding: 24px;
+    }
+    .banner-content h1 { font-size: 2.2rem; }
+}

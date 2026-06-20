@@ -1,0 +1,404 @@
+/* ==========================================================================
+   1. VARIABLES & RESET
+   ========================================================================== */
+:root {
+    --primary-color: #ccad00;    /* Premium Metallic Gold */
+    --secondary-color: #757373;  /* Sleek Accent Grey */
+    --text-dark: #0f172a;        /* Rich slate dark for typography */
+    --text-light: #475569;       /* Readable soft body color */
+    --bg-light: #f8fafc;         /* Clean gray background */
+    --white: #ffffff;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 10px 25px -5px rgba(204, 173, 0, 0.08);
+    --max-width: 1200px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-dark);
+    background-color: var(--white);
+    line-height: 1.7;
+    overflow-x: hidden;
+}
+
+.container {
+    width: 100%;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+/* ==========================================================================
+   2. GLOBAL NAVIGATION UTILITIES
+   ========================================================================== */
+.navbar {
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(8px);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 2px 15px rgba(0,0,0,0.02);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-text {
+    font-size: 1.35rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--primary-color);
+}
+
+.logo-text .highlight {
+    color: var(--secondary-color);
+}
+
+.nav-links {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+}
+
+.nav-item {
+    font-weight: 500;
+    font-size: 0.95rem;
+    color: var(--text-dark);
+    position: relative;
+    text-decoration: none;
+    padding: 6px 0;
+    transition: var(--transition);
+}
+
+.nav-item:hover, .nav-item.active {
+    color: var(--primary-color);
+}
+
+.nav-item::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-color);
+    transition: var(--transition);
+}
+
+.nav-item:hover::after, .nav-item.active::after {
+    width: 100%;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 24px;
+    font-weight: 500;
+    border-radius: 6px;
+    transition: var(--transition);
+    cursor: pointer;
+    font-size: 0.95rem;
+}
+
+.btn-quote {
+    background-color: var(--text-dark);
+    color: var(--white);
+}
+
+.btn-quote:hover {
+    background-color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+.btn-quote-mobile { display: none; }
+.menu-toggle { display: none; background: none; border: none; font-size: 1.4rem; cursor: pointer; }
+
+/* ==========================================================================
+   3. ABOUT PAGE HERO BANNER
+   ========================================================================== */
+.page-banner {
+    background: linear-gradient(rgba(15, 23, 42, 0.9), rgba(30, 41, 59, 0.95)), 
+                url('../images/banner-bg.jpg') no-repeat center center/cover;
+    padding: 90px 0;
+    color: var(--white);
+    text-align: center;
+}
+
+.banner-content h1 {
+    font-size: 2.8rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    letter-spacing: -0.5px;
+}
+
+.banner-content p {
+    font-size: 1.1rem;
+    color: #cbd5e1;
+    max-width: 600px;
+    margin: 0 auto;
+    font-weight: 300;
+}
+
+/* ==========================================================================
+   4. WHO WE ARE SECTION
+   ========================================================================== */
+.about-detail-section {
+    padding: 100px 0;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.about-text .sub-heading {
+    display: inline-block;
+    color: var(--primary-color);
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.about-text h2 {
+    font-size: 2.4rem;
+    font-weight: 700;
+    margin-bottom: 24px;
+    color: var(--text-dark);
+}
+
+.about-text p {
+    color: var(--text-light);
+    margin-bottom: 20px;
+}
+
+/* Features List Right-Side */
+.about-features {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+.feature-item {
+    display: flex;
+    gap: 20px;
+    background-color: var(--bg-light);
+    padding: 24px;
+    border-radius: 12px;
+    transition: var(--transition);
+    border-left: 4px solid transparent;
+}
+
+.feature-item:hover {
+    transform: translateX(6px);
+    background-color: var(--white);
+    box-shadow: var(--shadow-md);
+    border-left-color: var(--primary-color);
+}
+
+.icon-box {
+    width: 50px;
+    height: 50px;
+    background-color: rgba(204, 173, 0, 0.1);
+    color: var(--primary-color);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    flex-shrink: 0;
+}
+
+.feature-content h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.feature-content p {
+    font-size: 0.92rem;
+    color: var(--text-light);
+    line-height: 1.5;
+}
+
+/* ==========================================================================
+   5. MISSION & VISION
+   ========================================================================== */
+.mission-section {
+    padding: 100px 0;
+    background-color: var(--bg-light);
+}
+
+.mission-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+
+.mission-card {
+    background-color: var(--white);
+    padding: 50px 40px;
+    border-radius: 16px;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid #f1f5f9;
+    transition: var(--transition);
+}
+
+.mission-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-md);
+}
+
+.mission-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--primary-color), #a38a00);
+    color: var(--white);
+    font-size: 1.5rem;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+}
+
+.mission-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 14px;
+}
+
+.mission-card p {
+    color: var(--text-light);
+    font-size: 0.98rem;
+}
+
+/* ==========================================================================
+   6. STATS SECTION
+   ========================================================================== */
+.stats-section {
+    padding: 80px 0;
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    color: var(--white);
+    text-align: center;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.stat-card h3 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: var(--primary-color);
+}
+
+.stat-card p {
+    font-size: 1rem;
+    color: #e2e8f0;
+    font-weight: 500;
+}
+
+/* ==========================================================================
+   7. PREMIUM FOOTER
+   ========================================================================== */
+.main-footer {
+    background-color: #0f172a;
+    color: #94a3b8;
+    padding: 60px 0 30px 0;
+    text-align: center;
+}
+
+.main-footer h3 {
+    color: var(--white);
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+    margin-bottom: 14px;
+}
+
+.footer-desc {
+    max-width: 600px;
+    margin: 0 auto 24px auto;
+    font-size: 0.95rem;
+}
+
+.footer-contact-info p {
+    color: var(--white);
+    font-size: 0.95rem;
+}
+
+.footer-contact-info i {
+    color: var(--primary-color);
+    margin-right: 4px;
+}
+
+.footer-divider {
+    border: 0;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.08);
+    margin: 30px 0 20px 0;
+}
+
+.footer-credit {
+    font-size: 0.85rem;
+    color: #64748b;
+}
+
+/* ==========================================================================
+   8. RESPONSIVE MEDIA QUERIES
+   ========================================================================== */
+@media (max-width: 992px) {
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+    .banner-content h1 { font-size: 2.4rem; }
+}
+
+@media (max-width: 768px) {
+    .menu-toggle { display: block; color: var(--text-dark); }
+    
+    .nav-links {
+        position: fixed;
+        top: 74px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 74px);
+        background-color: var(--white);
+        flex-direction: column;
+        gap: 0;
+        padding: 30px 24px;
+        transition: var(--transition);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.05);
+    }
+
+    .nav-links.active { left: 0; }
+    .nav-item { width: 100%; padding: 14px 0; border-bottom: 1px solid #f1f5f9; }
+    .nav-item::after { display: none; }
+    .nav-cta { display: none; }
+    .btn-quote-mobile { display: block; width: 100%; margin-top: 24px; background-color: var(--primary-color); color: var(--white); }
+
+    .mission-grid, .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+    
+    .mission-card { padding: 35px 24px; }
+    .about-text h2 { font-size: 2rem; }
+}

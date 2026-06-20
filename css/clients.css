@@ -1,0 +1,384 @@
+/* ==========================================================================
+   1. RESET & VARIABLES
+   ========================================================================== */
+:root {
+    --primary-color: #ccad00;    /* Premium Metallic Gold */
+    --secondary-color: #757373;  /* Sleek Accent Grey */
+    --text-dark: #1e293b;        /* Slate Dark for readability */
+    --text-light: #64748b;       /* Muted gray for body paragraphs */
+    --bg-light: #f8fafc;         /* Soft background white */
+    --white: #ffffff;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --max-width: 1200px;
+    --shadow: 0 10px 30px rgba(204, 173, 0, 0.04); /* Ultra clean shadow */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-dark);
+    background-color: var(--white);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+.container {
+    width: 100%;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ==========================================================================
+   2. NAVIGATION BAR
+   ========================================================================== */
+.navbar {
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    padding: 18px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 2px 20px rgba(0,0,0,0.02);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-text {
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--primary-color);
+}
+
+.logo-text .highlight {
+    color: var(--secondary-color);
+}
+
+.nav-links {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+}
+
+.nav-item {
+    font-weight: 500;
+    font-size: 0.95rem;
+    color: var(--text-dark);
+    position: relative;
+    padding: 4px 0;
+    transition: var(--transition);
+}
+
+.nav-item:hover, .nav-item.active {
+    color: var(--primary-color);
+}
+
+.nav-item::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-color);
+    transition: var(--transition);
+}
+
+.nav-item:hover::after, .nav-item.active::after {
+    width: 100%;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 28px;
+    font-weight: 500;
+    border-radius: 8px;
+    transition: var(--transition);
+    cursor: pointer;
+    font-size: 0.95rem;
+    text-align: center;
+}
+
+.btn-quote {
+    background-color: var(--text-dark);
+    color: var(--white);
+}
+
+.btn-quote:hover {
+    background-color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+.btn-quote-mobile { display: none; }
+.menu-toggle { display: none; background: none; border: none; font-size: 1.5rem; color: var(--text-dark); cursor: pointer; }
+
+/* ==========================================================================
+   3. CLIENTS HERO BANNER
+   ========================================================================== */
+.page-banner {
+    background: linear-gradient(rgba(15, 23, 42, 0.88), rgba(30, 41, 59, 0.94)), 
+                url('../images/clients-bg.jpg') no-repeat center center/cover;
+    padding: 110px 0;
+    color: var(--white);
+    text-align: center;
+}
+
+.section-tag {
+    display: inline-block;
+    color: var(--primary-color);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+}
+
+.banner-content h1 {
+    font-size: 3.2rem;
+    font-weight: 700;
+    margin-bottom: 14px;
+    letter-spacing: -0.5px;
+}
+
+.banner-content p {
+    font-size: 1.15rem;
+    color: #cbd5e1;
+    max-width: 650px;
+    margin: 0 auto;
+    font-weight: 300;
+}
+
+/* ==========================================================================
+   4. CLIENTS PORTFOLIO GRID
+   ========================================================================== */
+.clients-section {
+    padding: 100px 0;
+    background-color: var(--bg-light);
+}
+
+.clients-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+}
+
+.client-card {
+    background-color: var(--white);
+    padding: 30px 20px;
+    border-radius: 14px;
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(0, 0, 0, 0.02);
+    text-align: center;
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.client-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 15px 35px rgba(204, 173, 0, 0.1);
+    border-color: rgba(204, 173, 0, 0.2);
+}
+
+.img-wrapper {
+    width: 100%;
+    height: 110px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.img-wrapper img {
+    max-height: 100%;
+    max-width: 85%;
+    object-fit: contain;
+    filter: grayscale(100%); /* Elegant Corporate Uniform Look */
+    opacity: 0.7;
+    transition: var(--transition);
+}
+
+.client-card:hover .img-wrapper img {
+    filter: grayscale(0%);
+    opacity: 1;
+    transform: scale(1.04);
+}
+
+.client-card h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    line-height: 1.4;
+    max-width: 90%;
+}
+
+/* ==========================================================================
+   5. CALL TO ACTION SECTION
+   ========================================================================== */
+.cta-section {
+    padding: 90px 0;
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    color: var(--white);
+    text-align: center;
+    position: relative;
+}
+
+.cta-content h2 {
+    font-size: 2.4rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+}
+
+.cta-content p {
+    font-size: 1.05rem;
+    color: #cbd5e1;
+    max-width: 700px;
+    margin: 0 auto 36px auto;
+    font-weight: 300;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: var(--white);
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(204, 173, 0, 0.2);
+}
+
+.btn-primary:hover {
+    background-color: #a38a00;
+    transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   6. PREMIUM FOOTER
+   ========================================================================== */
+.main-footer {
+    background-color: #0f172a;
+    color: #94a3b8;
+    padding: 70px 0 35px 0;
+    text-align: center;
+}
+
+.main-footer h3 {
+    color: var(--white);
+    font-size: 1.6rem;
+    letter-spacing: 1px;
+    margin-bottom: 14px;
+}
+
+.footer-desc {
+    max-width: 600px;
+    margin: 0 auto 20px auto;
+    font-size: 0.95rem;
+}
+
+.footer-contact-info p {
+    color: var(--white);
+    font-size: 0.95rem;
+    margin-bottom: 8px;
+}
+
+.footer-contact-info i {
+    color: var(--primary-color);
+    margin-right: 4px;
+}
+
+.footer-divider {
+    border: 0;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.08);
+    margin: 35px 0 25px 0;
+}
+
+.footer-credit {
+    font-size: 0.85rem;
+    color: #64748b;
+}
+
+/* ==========================================================================
+   7. RESPONSIVE MEDIA QUERIES
+   ========================================================================== */
+@media (max-width: 1200px) {
+    .clients-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+    }
+}
+
+@media (max-width: 992px) {
+    .clients-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .banner-content h1 { font-size: 2.6rem; }
+    .cta-content h2 { font-size: 2rem; }
+}
+
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 78px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 78px);
+        background-color: var(--white);
+        flex-direction: column;
+        gap: 0;
+        padding: 40px 24px;
+        transition: 0.4s cubic-bezier(0.1, 1, 0.1, 1);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.05);
+    }
+
+    .nav-links.active { left: 0; }
+    .nav-item { width: 100%; padding: 16px 0; font-size: 1.1rem; border-bottom: 1px solid #f1f5f9; }
+    .nav-item::after { display: none; }
+    .nav-cta { display: none; }
+
+    .btn-quote-mobile {
+        display: block;
+        width: 100%;
+        margin-top: 30px;
+        background-color: var(--primary-color);
+        color: var(--white);
+    }
+
+    .clients-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .client-card {
+        padding: 35px 20px;
+    }
+}
